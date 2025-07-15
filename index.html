@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lasal Thuduwege | Portfolio</title>
+  <meta name="description" content="Portfolio of Lasal Thuduwege, Software Engineering Undergraduate from Sri Lanka" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #0f0f0f, #1f1f1f);
+  color: #ffffff;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgba(15, 15, 15, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(to right, #00bcd4, #007c91);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.nav-links a {
+  margin-left: 24px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #00bcd4;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #00bcd4;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+.hero-left, .hero-right {
+  flex: 1;
+  padding: 40px;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-left p:first-child {
+  color: #00bcd4;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.hero-left h1 {
+  font-size: 56px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.hero-left h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #bbb;
+  margin-bottom: 24px;
+}
+
+.hero-left p {
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 32px;
+  text-align: justify;
+}
+
+.btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  border: 1.5px solid #00bcd4;
+  color: #00bcd4;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  display: inline-block;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.btn:hover {
+  background-color: #00bcd4;
+  color: #000;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.hero-right img {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 4px solid #00bcd4;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(0, 188, 212, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.hero-right img:hover {
+  transform: scale(1.05);
+}
+
+/* Container Sections */
+.container {
+  padding: 80px 24px 60px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h2.section-title {
+  font-size: 32px;
+  color: #00bcd4;
+  margin-bottom: 24px;
+}
+
+/* Project Cards */
+.project-box {
+  background: linear-gradient(145deg, #1c1c1c, #242424);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.1);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.project-box:nth-child(1) { animation-delay: 0.1s; }
+.project-box:nth-child(2) { animation-delay: 0.2s; }
+.project-box:nth-child(3) { animation-delay: 0.3s; }
+.project-box:nth-child(4) { animation-delay: 0.4s; }
+.project-box:nth-child(5) { animation-delay: 0.5s; }
+.project-box:nth-child(6) { animation-delay: 0.6s; }
+
+.project-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 188, 212, 0.3);
+}
+
+.project-box h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+  color: #00bcd4;
+}
+
+.project-box h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0%;
+  background-color: #00bcd4;
+  transition: width 0.3s;
+}
+
+.project-box:hover h3::after {
+  width: 100%;
+}
+
+/* Skills */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 24px;
+  text-align: center;
+}
+
+.skill-box {
+  background: linear-gradient(145deg, #1a1a1a, #222222);
+  padding: 32px 20px;
+  height: 160px; /* Increased height */
+  border-radius: 14px;
+  color: #00bcd4;
+  font-weight: 600;
+  font-size: 17px;
+  box-shadow: 0 6px 12px rgba(0, 188, 212, 0.1);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-box i {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.skill-box span {
+  display: block;
+  font-size: 16px;
+}
+
+.skill-box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,188,212,0.15) 0%, transparent 70%);
+  transform: scale(0);
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.skill-box:hover::before {
+  transform: scale(1);
+}
+
+.skill-box:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 14px 30px rgba(0, 188, 212, 0.3);
+  color: #ffffff;
+  background: linear-gradient(to right, #00bcd4, #007c91);
+  border: 1px solid transparent;
+  z-index: 1;
+}
+
+.info-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: linear-gradient(to right, #1a1a1a, #222222);
+  border-left: 5px solid #00bcd4;
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 12px rgba(0, 188, 212, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 188, 212, 0.25);
+}
+
+.info-card .icon {
+  font-size: 26px;
+  color: #00bcd4;
+  min-width: 30px;
+  margin-top: 6px;
+}
+
+.info-card .details h3 {
+  margin-bottom: 4px;
+  color: #00bcd4;
+  font-size: 18px;
+}
+
+.info-card .details span {
+  display: block;
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+.info-card .details p,
+.info-card .details ul {
+  font-size: 14px;
+  color: #bbb;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.info-card ul li {
+  margin-bottom: 4px;
+}
+
+
+/* Ensure nav spacing for new links stays clean */
+.nav-links a { margin-left: 18px; }
+
+
+/* Contact */
+.contact-container {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-item .icon {
+  background-color: #111;
+  color: #fff;
+  border-radius: 50%;
+  padding: 14px;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-item .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item .info strong {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.contact-item .info p, .contact-item .info a {
+  font-size: 14px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.contact-item .info a:hover {
+  color: #00bcd4;
+  text-decoration: underline;
+}
+
+/* Make the entire section feel larger */
+#contact {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;
+  }
+
+  .contact-info {
+    align-items: flex-start;
+  }
+}
+
+
+/* Footer */
+.footer {
+  background-color: #0f0f0f;
+  padding: 60px 24px 30px;
+  color: #aaa;
+  font-size: 15px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  position: relative;
+}
+
+.footer-left {
+  position: absolute;
+  left: 24px;
+  top: 0;
+}
+
+.footer-left h3 {
+  color: #00bcd4;
+  font-size: 20px;
+}
+
+.footer-center {
+  text-align: center;
+  flex: 1;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+  color: #00bcd4;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 12px;
+  color: #ccc;
+  font-size: 20px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00bcd4;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left {
+    position: static;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-icons {
+    margin-top: 12px;
+  }
+}
+
+
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    padding-top: 100px;
+    text-align: center;
+  }
+
+  .hero-left, .hero-right {
+    padding: 20px;
+  }
+
+  .hero-right img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-left h1 {
+    font-size: 40px;
+  }
+
+  .hero-left h2 {
+    font-size: 22px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Lasal Thuduwege</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-left">
+        <p>Hi, I'm</p>
+        <h1>Lasal Thuduwege</h1>
+        <h2>Software Engineering Undergraduate</h2>
+        <p>I'm a software engineering undergraduate specializing in building exceptional digital experiences. Currently focused on web development and cloud technologies.</p>
+        <a href="#" class="btn">Download CV</a>
+      </div>
+      <div class="hero-right">
+        <img src="1000331318.jpg" alt="Lasal Thuduwege" />
+      </div>
+    </div>
+
+    <div id="about" class="container">
+  <h2 class="section-title">About Me</h2>
+  <p>
+    I'm Lasal Thuduwege, a passionate Software Engineering undergraduate at the University of Sri Jayewardenepura, Sri Lanka. With a strong foundation in programming and software development, I am driven by a deep curiosity for emerging technologies—especially Artificial Intelligence and Machine Learning.
+  </p>
+  <p>
+    My goal is to explore the intersection of AI and real-world problem-solving by building smart, scalable, and efficient software systems. I enjoy diving into challenging concepts, experimenting with new tools, and learning continuously through hands-on projects and research. 
+  </p>
+  <p>
+    I’ve already contributed to educational platforms and research tools, and I’m currently expanding my skills in AI, ML, and data science. I am eager to collaborate, innovate, and grow within a community of forward-thinking individuals, and I look forward to contributing meaningfully to the future of intelligent technology.
+  </p>
+</div>
+
+
+
+<div id="projects" class="container">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="project-box">
+    <h3>Cricket League Auction System</h3>
+    <p>A C# desktop application developed as a team to manage player auctions for cricket leagues, including bidding logic and team management features.</p>
+  </div>
+
+  <div class="project-box">
+    <h3>Cricket Club Website</h3>
+    <p>Designed and developed a responsive website for a local cricket club using HTML, CSS, PHP, and JavaScript to display match schedules, player stats, and club news.</p>
+  </div>
+
+  <div class="project-box">
+    <h3>Cricket Club Management System</h3>
+    <p>A Java-based system to streamline administrative tasks like player registrations, event scheduling, and performance tracking for cricket clubs.</p>
+  </div>
+
+  <div class="project-box">
+    <h3>Paddy Distribution Website</h3>
+    <p>Group project developed for the diploma final, focused on managing paddy stock, farmer details, and regional distribution using web technologies.</p>
+  </div>
+
+  <div class="project-box">
+    <h3>StudyNest</h3>
+    <p>A collaborative educational platform for students to upload, manage, and share lecture notes and academic resources. Built using HTML, CSS, PHP, and JavaScript.</p>
+  </div>
+
+  <div class="project-box">
+    <h3>Centralized E-Commerce & Auction Platform</h3>
+    <p>An ongoing group project focused on building a unified platform for selling laptops and managing auctions, using HTML, CSS, PHP, and JavaScript.</p>
+  </div>
+</div>
+
+
+    <div id="skills" class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-grid">
+  <div class="skill-box"><i class="fab fa-java"></i><span> Java</span></div>
+  <div class="skill-box"><i class="fab fa-js-square"></i><span> JavaScript</span></div>
+  <div class="skill-box"><i class="fab fa-python"></i><span> Python</span></div>
+  <div class="skill-box"><i class="fas fa-code"></i><span> C#</span></div>
+  <div class="skill-box"><i class="fas fa-code"></i><span> C++</span></div>
+  <div class="skill-box"><i class="fab fa-html5"></i><span> HTML & CSS</span></div>
+  <div class="skill-box"><i class="fab fa-php"></i><span> PHP</span></div>
+  <div class="skill-box"><i class="fas fa-database"></i><span> MySQL</span></div>
+  <div class="skill-box"><i class="fab fa-github"></i><span> Git & GitHub</span></div>
+  <div class="skill-box"><i class="fas fa-network-wired"></i><span> Networking</span></div>
+</div>
+
+   
+   <div id="education" class="container">
+  <h2 class="section-title">Education</h2>
+
+  <div class="info-card edu">
+    <div class="icon"><i class="fas fa-school"></i></div>
+    <div class="details">
+      <h3>Secondary Education</h3>
+      <span><strong>H/Ruhunu Vijayaba National College</strong> (2008 – 2023)</span>
+      <ul>
+        <li>Grade 5 Scholarship (2012) – 164 marks</li>
+        <li>G.C.E. O/L (2018) – All A Grades</li>
+        <li>G.C.E. A/L – Mathematics Stream
+          <ul>
+            <li>1st Attempt (2021): 3B | Z-Score: 1.3444</li>
+            <li>2nd Attempt (2022): 1A 2B | Z-Score: 1.5619</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-card edu">
+    <div class="icon"><i class="fas fa-laptop-code"></i></div>
+    <div class="details">
+      <h3>Diploma in Software Engineering</h3>
+      <span>NIBM – 2023</span>
+      <p>Graduated with Distinction, GPA: 3.86</p>
+    </div>
+  </div>
+
+  <div class="info-card edu">
+    <div class="icon"><i class="fas fa-university"></i></div>
+    <div class="details">
+      <h3>Bachelor of Software Engineering (Hons)</h3>
+      <span>University of Sri Jayewardenepura – 2024–Present</span>
+      <p>Currently pursuing undergraduate studies in software engineering.</p>
+    </div>
+  </div>
+</div>
+
+
+   <div id="experience" class="container">
+  <h2 class="section-title">Experience</h2>
+
+  <div class="info-card exp">
+    <div class="icon"><i class="fas fa-user-tie"></i></div>
+    <div class="details">
+      <h3>School Prefect</h3>
+      <span>Ruhunu Vijayaba National College</span>
+      <p>Demonstrated leadership, discipline, and teamwork during school years.</p>
+    </div>
+  </div>
+
+  <div class="info-card exp">
+    <div class="icon"><i class="fas fa-network-wired"></i></div>
+    <div class="details">
+      <h3>Standing Committee Member – Industrial Relations</h3>
+      <span>IEEE Student Branch – USJ</span>
+      <p>Bridging industry and academia through professional networking initiatives.</p>
+    </div>
+  </div>
+
+  <div class="info-card exp">
+    <div class="icon"><i class="fas fa-coins"></i></div>
+    <div class="details">
+      <h3>Finance Committee Member</h3>
+      <span>Road to Legacy 2.0 – 2025</span>
+      <p>Managed budgeting and finance for large-scale university event.</p>
+    </div>
+  </div>
+
+  <div class="info-card exp">
+    <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+    <div class="details">
+      <h3>Finance Committee Head & Co-chair</h3>
+      <span>Heenaya Saviyak – Present</span>
+      <p>Leading financial operations and event planning for IEEE SB’s social project.</p>
+    </div>
+  </div>
+
+  <div class="info-card exp">
+    <div class="icon"><i class="fas fa-calculator"></i></div>
+    <div class="details">
+      <h3>Junior Treasurer</h3>
+      <span>Association of Computing Students – 2025–Present</span>
+      <p>Oversees treasury activities and financial documentation of the ACS committee.</p>
+    </div>
+  </div>
+
+  <div class="info-card exp">
+    <div class="icon"><i class="fas fa-users-cog"></i></div>
+    <div class="details">
+      <h3>EduACS Project Member</h3>
+      <span>Association of Computing Students</span>
+      <p>Coordinated logistics and managed project finances for academic outreach.</p>
+    </div>
+  </div>
+
+  <div class="info-card exp">
+    <div class="icon"><i class="fas fa-user-friends"></i></div>
+    <div class="details">
+      <h3>Batch Representative</h3>
+      <span>University of Sri Jayewardenepura – 2025–Present</span>
+      <p>Representing 22/23 batch in university affairs and academic coordination.</p>
+    </div>
+  </div>
+</div>
+
+
+
+    <div id="contact" class="container">
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-container">
+    
+    
+    <form class="contact-form" action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    
+<div class="contact-info">
+  <div class="contact-item">
+    <div class="icon"><i class="fas fa-envelope"></i></div>
+    <div class="info">
+      <strong>Email</strong>
+      <p>lasalruvinduthuduwege@gmail.com</p>
+    </div>
+  </div>
+  <div class="contact-item">
+    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+    <div class="info">
+      <strong>Phone</strong>
+      <p>+94 742912596</p>
+    </div>
+  </div>
+  <div class="contact-item">
+    <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+    <div class="info">
+      <strong>LinkedIn</strong>
+      <p><a href="https://linkedin.com/in/lasal18" target="_blank">linkedin.com/in/lasal18</a></p>
+    </div>
+  </div>
+  <div class="contact-item">
+    <div class="icon"><i class="fab fa-github"></i></div>
+    <div class="info">
+      <strong>GitHub</strong>
+      <p><a href="https://github.com/lasal18" target="_blank">github.com/lasal18</a></p>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </main>
+
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- Left: Name -->
+    <div class="footer-left">
+      <h3>Lasal Thuduwege</h3>
+    </div>
+
+    <!-- Center: Links + Socials -->
+    <div class="footer-center">
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/lasal18" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/LasalThuduwege" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://facebook.com/yourusername" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="mailto:lasalthuduwege@example.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Lasal Thuduwege. All Rights reserved.</p>
+  </div>
+</footer>
+
+
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
